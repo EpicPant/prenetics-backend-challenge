@@ -33,5 +33,37 @@ export async function search(
     activatetime ? querybuilder.andWhere(` DATE_TRUNC('day', result.activateTime) = :activatetime`, { activatetime }) : null;
     resulttime ? querybuilder.andWhere(`DATE_TRUNC('day', result.resultTime) = :resulttime`, { resulttime }) : null;
 
-    return await querybuilder.getManyAndCount();
+    const result = await querybuilder.getManyAndCount();
+
+    return {
+        meta: {
+            total: result[1]
+        },
+        data: result[0].map(({ result, resultId, sampleId, type, activateTime, resultTime, profile }) => ({
+            id: resultId,
+            type: 'sample',
+            attributes: {
+                result,
+                sampleId,
+                type,
+                activateTime,
+                resultTime
+            },
+            relationships: {
+                profile: {
+                    data: {
+                        type: 'profile',
+                        id: profile.profileId
+                    }
+                }
+            }
+        })),
+        included: result[0].map(({ profile }) => ({
+            type: 'profile',
+            id: profile.profileId,
+            attributes: {
+                name: profile.name
+            }
+        }))
+    }
 }
