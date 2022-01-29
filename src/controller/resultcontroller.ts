@@ -30,6 +30,7 @@ export const resultController = new class {
                     manager,
                     organisation,
                     request.params,
+                    request.query
                 );
                 response.status(200).json(result);
             }
