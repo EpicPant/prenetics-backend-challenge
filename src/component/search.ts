@@ -10,7 +10,7 @@ export async function search(
     query: Request['query']
 ) {
 
-    const { limit = 0, offset = 0, sampleid = "", activatetime = "", patientname = "", resulttime = "" } = query;
+    const { limit = 0, offset = 0, sampleid = '', activatetime = '', patientname = '', resulttime = '' } = query;
 
     const querybuilder = await manager.createQueryBuilder()
     .select('result')
@@ -27,11 +27,11 @@ export async function search(
             organisationId: organisation.organisationId
         }
     ).offset(offset * limit).limit(limit);
-    
-    patientname ? querybuilder.andWhere('profile.name = :patientname', { patientname }) : null;
-    sampleid ? querybuilder.andWhere('result.sampleId = :sampleid', { sampleid }) : null;
-    activatetime ? querybuilder.andWhere(` DATE_TRUNC('day', result.activateTime) = :activatetime`, { activatetime }) : null;
-    resulttime ? querybuilder.andWhere(`DATE_TRUNC('day', result.resultTime) = :resulttime`, { resulttime }) : null;
+
+    if (patientname) { querybuilder.andWhere('profile.name = :patientname', { patientname }); }
+    if (sampleid) { querybuilder.andWhere('result.sampleId = :sampleid', { sampleid }); }
+    if (activatetime) { querybuilder.andWhere(` DATE_TRUNC('day', result.activateTime) = :activatetime`, { activatetime }); }
+    if (resulttime) { querybuilder.andWhere(`DATE_TRUNC('day', result.resultTime) = :resulttime`, { resulttime }); }
 
     const result = await querybuilder.getManyAndCount();
 
@@ -65,5 +65,5 @@ export async function search(
                 name: profile.name
             }
         }))
-    }
+    };
 }

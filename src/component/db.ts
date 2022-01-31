@@ -19,7 +19,7 @@ const dbConfig: PostgresConnectionOptions = {
     ],
     subscribers: [
         `${resolve(__dirname, '../subscriber')}/**.{js,ts}`
-    ],  
+    ],
     cli: {
         'entitiesDir': resolve(__dirname, '../entity'),
         'migrationsDir': resolve(__dirname, '../migration'),
