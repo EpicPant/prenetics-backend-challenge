@@ -1,5 +1,6 @@
 {
     "db": {
+        "testurl": "postgres://dummy:dummy@localhost:5432/test",
         "url": "postgres://dummy:dummy@localhost:5432/services",
         "dbname": "services",
         "schema": "test"
