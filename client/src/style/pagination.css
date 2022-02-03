@@ -20,9 +20,9 @@
 
 #pagination ul li:hover > a {
     cursor: pointer;
-    border-bottom: 1px solid lightskyblue;
+    border-bottom: 1.5px solid var(--light-green);
 }
 
 #pagination ul li.active a {
-    border-bottom: 1px solid lightskyblue;
+    border-bottom: 1.5px solid var(--light-green);
 }

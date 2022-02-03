@@ -14,7 +14,7 @@ div#content-card {
 }
 
 #table-wrapper {
-    max-height: 500px;
+    max-height: 600px;
     padding: 0;
     margin: 1rem;
     overflow: scroll;
