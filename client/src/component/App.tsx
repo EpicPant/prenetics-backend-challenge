@@ -1,8 +1,8 @@
-import React from 'react';
-import PreneticsSidebar from './Sidebar';
-import TopNav from './TopNav';
 import '../style/app.css';
-import TestResultsPage from './TestResultPage';
+import React from 'react';
+import { Sidebar } from './Sidebar';
+import { TopNav } from './TopNav';
+import { TestResultPage } from './TestResultPage';
 
 const App = () => {
   return (
@@ -15,10 +15,10 @@ const App = () => {
       </header>
 
       <div id="content">
-        <PreneticsSidebar />
+        <Sidebar />
         <div id="content-wrapper">
           <TopNav />
-          <TestResultsPage />
+          <TestResultPage />
         </div>
       </div>
     </div>
