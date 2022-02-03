@@ -2,7 +2,7 @@ import React from 'react';
 import PreneticsSidebar from './Sidebar';
 import TopNav from './TopNav';
 import '../style/app.css';
-import Table from './Table';
+import TestResultsPage from './TestResultPage';
 
 function App() {
   return (
@@ -18,7 +18,7 @@ function App() {
         <PreneticsSidebar />
         <div id="content-wrapper">
           <TopNav />
-          <Table />
+          <TestResultsPage />
         </div>
       </div>
     </div>
