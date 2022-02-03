@@ -3,22 +3,23 @@ import { shallow, ShallowWrapper } from 'enzyme';
 import Sidebar from '../component/Sidebar';
 
 describe('Prenetics Sidebar Testing', () => {
-    test('render div#sidebar', () => {
-        const wrapper = shallow(<Sidebar/>);
 
+    let wrapper: ShallowWrapper;
+
+    beforeEach(() => {
+        wrapper = shallow(<Sidebar />);
+    });
+
+    test('render div#sidebar', () => {
         expect(wrapper.find('div#sidebar').length).toBe(1);
     })
 
     test('render the Prenetics™ title', () => {
-        const wrapper = shallow(<Sidebar/>);
-        
         const text = wrapper.text().includes('Prenetics™');
         expect(text).toBe(true);
     });
 
     test('render veretical menu with 3 links', () => {
-        const wrapper = shallow(<Sidebar/>);
-
         const menu = wrapper.find('menu');
         expect(menu.length).toBe(1);
 
@@ -26,8 +27,6 @@ describe('Prenetics Sidebar Testing', () => {
     });
 
     test('render log-in status at the bottom', () => {
-        const wrapper = shallow(<Sidebar/>);
-
         const container = wrapper.find('div#status');
         expect(container.length).toBe(1);
 

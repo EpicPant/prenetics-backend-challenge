@@ -1,13 +1,13 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, ShallowWrapper } from 'enzyme';
 import App from '../component/App';
 import Sidebar from '../component/Sidebar';
 import TopNav from '../component/TopNav';
-import Table from '../component/Table';
+import TestResultPage from '../component/TestResultPage';
 
 
 describe('App Testing', () => {
-  let wrapper: any;
+  let wrapper: ShallowWrapper;
 
   beforeEach(() => {
     wrapper = shallow(<App/>);
@@ -22,7 +22,7 @@ describe('App Testing', () => {
   });
 
   test('rendered Table properly', () => {
-    expect(wrapper.find(Table).length).toEqual(1);
+    expect(wrapper.find(TestResultPage).length).toEqual(1);
   });
 
 });
