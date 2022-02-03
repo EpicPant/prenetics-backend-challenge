@@ -1,8 +1,7 @@
 import React from 'react';
 
-export const TotalResultFound = () => {
-    const total = 15;
+export const TotalResultFound = (props: { children?: any }) => {
     return (
-        <div>{total} records in total</div>
+        <div>{props.children} records in total</div>
     )
 }
