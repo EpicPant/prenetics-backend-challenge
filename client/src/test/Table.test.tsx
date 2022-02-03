@@ -1,8 +1,8 @@
 import React from 'react';
 import { shallow, ShallowWrapper } from 'enzyme';
-import TestResultPage from '../component/TestResultPage';
-import SearchInputGroup from '../component/SearchGroup';
-import ResultTableRow from '../component/ResultTableRow';
+import { TestResultPage } from '../component/TestResultPage';
+import { SearchInputGroup } from '../component/SearchInputGroup';
+import { ResultTableRow } from '../component/ResultTableRow';
 
 describe('Table Testing', () => {
 

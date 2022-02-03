@@ -1,9 +1,9 @@
 import React from 'react';
 import { shallow, ShallowWrapper } from 'enzyme';
 import App from '../component/App';
-import Sidebar from '../component/Sidebar';
-import TopNav from '../component/TopNav';
-import TestResultPage from '../component/TestResultPage';
+import { Sidebar } from '../component/Sidebar';
+import { TopNav } from '../component/TopNav';
+import { TestResultPage } from '../component/TestResultPage';
 
 
 describe('App Testing', () => {

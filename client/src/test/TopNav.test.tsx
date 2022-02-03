@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow, ShallowWrapper } from 'enzyme';
-import TopNav from '../component/TopNav';
+import { TopNav } from '../component/TopNav';
 import { text } from 'node:stream/consumers';
 
 describe('TopNav Testing', () => {

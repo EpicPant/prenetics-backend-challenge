@@ -2,7 +2,7 @@ import { mount, ReactWrapper } from 'enzyme';
 import React from 'react';
 import { Provider } from 'react-redux';
 import { store } from '../store';
-import SearchInputGroup from '../component/SearchGroup';
+import { SearchInputGroup } from '../component/SearchInputGroup';
 
 describe('Search Input Group Testing', () => {
 

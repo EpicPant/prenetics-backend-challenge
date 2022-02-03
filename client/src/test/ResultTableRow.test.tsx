@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow, ShallowWrapper } from 'enzyme';
-import ResultTableRow from '../component/ResultTableRow';
+import { ResultTableRow } from '../component/ResultTableRow';
 
 describe('Result Table Row', () => {
     const initialValue = {
