@@ -9,17 +9,15 @@ interface TableRowProps {
     sampleId: String;
 }
 
-export default class ResultTableRow extends React.Component<TableRowProps> {
-    render() {
-        return (
-            <tr id="results">
-                <td>{this.props.sampleId}</td>
-                <td>{this.props.activationTime.toDateString()}</td>
-                <td>{this.props.resultTime.toDateString()}</td>
-                <td>-</td>
-                <td>{this.props.patientName}</td>
-                <td>{this.props.result === 'positive' ? 'detected' : 'not-detected'}</td>
-            </tr>
-        );
-    }
+export const ResultTableRow = (props: TableRowProps) => {
+    return (
+        <tr id="results">
+            <td>{props.sampleId}</td>
+            <td>{props.activationTime.toDateString()}</td>
+            <td>{props.resultTime.toDateString()}</td>
+            <td>-</td>
+            <td>{props.patientName}</td>
+            <td>{props.result === 'positive' ? 'detected' : 'not-detected'}</td>
+        </tr>
+    );
 }

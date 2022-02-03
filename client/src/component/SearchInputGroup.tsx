@@ -4,7 +4,7 @@ import { updateKeyword } from '../feature/search';
 import { SEARCH_PLACEHOLDER } from './Constants';
 import { useDispatch } from 'react-redux';
 
-export default () => {
+export const SearchInputGroup = () => {
 
     const [searchInput, setSearchInput] = useState('');
 

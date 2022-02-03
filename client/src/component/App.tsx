@@ -4,7 +4,7 @@ import TopNav from './TopNav';
 import '../style/app.css';
 import TestResultsPage from './TestResultPage';
 
-function App() {
+const App = () => {
   return (
     <div className="App">
       <header className="App-header">

@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { ReactPropTypes } from 'react';
+import { JsxElement } from 'typescript';
 
 interface FooterProps {
     total: number;
@@ -6,30 +7,26 @@ interface FooterProps {
     total_page: number
 }
 
-class PageLink extends React.Component {
-    render() {
-        return (
-            <li>
-                <a>{this.props.children}</a>
-            </li>
-        )
-    }
+const PageLink = (props: { children?: any }) => {
+    return (
+        <li>
+            <a>{props.children}</a>
+        </li>
+    )
 }
 
-export default class ResultTableFooter extends React.Component<FooterProps> {
-    render() {
-        return (
-            <div id='table-footer'>
-                <div id='result-total'>
-                    <p>{this.props.total} records in total</p>
-                </div>
-
-                <div id="pagination">
-                    <ul>
-
-                    </ul>
-                </div>
+export const ResultTableFooter = (props: FooterProps) => {
+    return (
+        <div id='table-footer'>
+            <div id='result-total'>
+                <p>{props.total} records in total</p>
             </div>
-        );
-    }
+
+            <div id="pagination">
+                <ul>
+                    <PageLink>1</PageLink>
+                </ul>
+            </div>
+        </div>
+    );
 }
