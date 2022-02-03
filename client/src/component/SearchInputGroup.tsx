@@ -1,7 +1,7 @@
 import '../style/search_input_group.css';
 import React, { useState } from 'react';
 import { updateKeyword } from '../feature/search';
-import { SEARCH_PLACEHOLDER } from './Constants';
+import { SEARCH_PLACEHOLDER } from '../resources/constants';
 import { useDispatch } from 'react-redux';
 
 export const SearchInputGroup = () => {
