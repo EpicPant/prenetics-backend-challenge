@@ -1,5 +1,7 @@
 import '../style/app.css';
 import React from 'react';
+import { Provider } from 'react-redux';
+import { store } from '../store';
 import { Sidebar } from './Sidebar';
 import { TopNav } from './TopNav';
 import { TestResultPage } from './TestResultPage';
@@ -16,9 +18,11 @@ const App = () => {
 
       <div id="content">
         <Sidebar />
+        <TopNav />
         <div id="content-wrapper">
-          <TopNav />
-          <TestResultPage />
+          <Provider store={store}>
+            <TestResultPage />
+          </Provider>
         </div>
       </div>
     </div>
