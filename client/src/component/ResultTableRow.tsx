@@ -1,19 +1,12 @@
 import React from 'react';
+import { ResultType } from '../resources/types';
 
-interface TableRowProps {
-    patientName: String;
-    activationTime: Date;
-    resultTime: Date;
-    result: String;
-    sampleId: String;
-}
-
-export const ResultTableRow = (props: TableRowProps) => {
+export const ResultTableRow = (props: ResultType) => {
     return (
         <tr id="results">
             <td>{props.sampleId}</td>
-            <td>{props.activationTime.toDateString()}</td>
-            <td>{props.resultTime.toDateString()}</td>
+            <td>{props.activationTime}</td>
+            <td>{props.resultTime}</td>
             <td>-</td>
             <td>{props.patientName}</td>
             <td>{props.result === 'positive' ? 'detected' : 'not-detected'}</td>
