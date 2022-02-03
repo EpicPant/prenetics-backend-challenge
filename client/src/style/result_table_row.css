@@ -1,0 +1,8 @@
+tr#results {
+    color: var(--dark-gray);
+}
+
+tr#results td {
+    padding: 1.3rem 2rem 0 0;
+    min-width: 120px;
+}

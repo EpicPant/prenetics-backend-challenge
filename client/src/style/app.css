@@ -9,6 +9,7 @@ html {
     --green: rgb(109, 174, 85);
     --light-green: rgb(86, 137, 67);
     --light-gray: rgb(176, 176, 176);
+    --dark-gray: rgb(100, 100, 100);
 }
 
 .App {
