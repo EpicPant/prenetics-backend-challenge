@@ -1,1 +1,1 @@
-export const SEARCH_PLACEHOLDER = 'Search by date, name, barcode, seperate multiple search criteria with ","';
+export const SEARCH_PLACEHOLDER = 'Search by name, barcod, dates seperate multiple search criteria with ":"';
