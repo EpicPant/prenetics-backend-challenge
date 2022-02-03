@@ -4,6 +4,8 @@ import { Provider } from 'react-redux';
 import { store } from '../store';
 import { SearchInputGroup } from './SearchInputGroup';
 import { ResultTableRow } from './ResultTableRow';
+import { Pagination } from './Pagination';
+import { TotalResultFound } from './TotalResultFound';
 
 const mockData = {
     sampleId: "213812937246234",
@@ -15,8 +17,8 @@ const mockData = {
 
 export const TestResultPage = () => {
     return (
-        <div id="table">
-            <Provider store={store}>
+        <Provider store={store}>
+            <div id="table">
                 <SearchInputGroup />
 
                 <table id="result-table">
@@ -38,9 +40,22 @@ export const TestResultPage = () => {
                         <ResultTableRow {...mockData} />
                         <ResultTableRow {...mockData} />
                         <ResultTableRow {...mockData} />
+                        <ResultTableRow {...mockData} />
+                        <ResultTableRow {...mockData} />
+                        <ResultTableRow {...mockData} />
+                        <ResultTableRow {...mockData} />
+                        <ResultTableRow {...mockData} />
+                        <ResultTableRow {...mockData} />
+                        <ResultTableRow {...mockData} />
+                        <ResultTableRow {...mockData} />
+                        <ResultTableRow {...mockData} />
                     </tbody>
                 </table>
-            </Provider>
-        </div>
+            </div>
+            <div id="table-footer">
+                <TotalResultFound />
+                <Pagination />
+            </div>
+        </Provider>
     );
 }
