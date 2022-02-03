@@ -16,3 +16,19 @@ table#result-table thead {
     font-weight: bolder;
     text-align: left;
 }
+
+tr#results {
+    color: var(--dark-gray);
+}
+
+tr#results td {
+    padding: 1.3rem 2rem 0 0;
+    min-width: 120px;
+}
+
+#table-footer {
+    margin: 2rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}

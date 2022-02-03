@@ -1,4 +1,3 @@
-import '../style/result_table_row.css';
 import React from 'react';
 
 interface TableRowProps {
