@@ -1,61 +1,58 @@
 import '../style/table.css';
-import React from 'react';
-import { Provider } from 'react-redux';
-import { store } from '../store';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getResultsFromAPI } from '../feature/result';
 import { SearchInputGroup } from './SearchInputGroup';
 import { ResultTableRow } from './ResultTableRow';
 import { Pagination } from './Pagination';
 import { TotalResultFound } from './TotalResultFound';
-
-const mockData = {
-    sampleId: "213812937246234",
-    patientName: "Peter Chan",
-    activationTime: new Date(),
-    resultTime: new Date(),
-    result: 'positive'
-}
+import { RootState } from '../store';
 
 export const TestResultPage = () => {
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getResultsFromAPI())
+    }, [])
+
+    const { data, meta, status } = useSelector((state: RootState) => state.result);
+    if (status !== 'fulfilled') {
+        return (
+            <div id='table'>
+                Loading...
+            </div>       
+        )
+    }
+
     return (
-        <Provider store={store}>
-            <div id="table">
+        <>
+            <div id='content-card'>
                 <SearchInputGroup />
+                <div id='table-wrapper'>
+                    <table id='result-table'>
+                        <thead>
+                            <tr>
+                                <th>Barcode</th>
+                                <th>Activation</th>
+                                <th>Report Released</th>
+                                <th>Rejection</th>
+                                <th>Name</th>
+                                <th>Result</th>
+                            </tr>
+                        </thead>
 
-                <table id="result-table">
-                    <thead>
-                        <tr>
-                            <th>Barcode</th>
-                            <th>Activation</th>
-                            <th>Report Released</th>
-                            <th>Rejection</th>
-                            <th>Name</th>
-                            <th>Result</th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                        <ResultTableRow {...mockData} />
-                        <ResultTableRow {...mockData} />
-                        <ResultTableRow {...mockData} />
-                        <ResultTableRow {...mockData} />
-                        <ResultTableRow {...mockData} />
-                        <ResultTableRow {...mockData} />
-                        <ResultTableRow {...mockData} />
-                        <ResultTableRow {...mockData} />
-                        <ResultTableRow {...mockData} />
-                        <ResultTableRow {...mockData} />
-                        <ResultTableRow {...mockData} />
-                        <ResultTableRow {...mockData} />
-                        <ResultTableRow {...mockData} />
-                        <ResultTableRow {...mockData} />
-                        <ResultTableRow {...mockData} />
-                    </tbody>
-                </table>
+                        <tbody>
+                            { data.map((item, i) => (
+                                <ResultTableRow key={i} {...item} />
+                            )) }
+                        </tbody>
+                    </table>
+                </div>
             </div>
-            <div id="table-footer">
-                <TotalResultFound />
+            <div id='table-footer'>
+                <TotalResultFound>{meta.total}</TotalResultFound>
                 <Pagination />
             </div>
-        </Provider>
+        </>
     );
 }
