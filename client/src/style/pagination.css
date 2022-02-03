@@ -6,6 +6,7 @@
     list-style: none;
     display: flex;
     background: #fff;
+    border-radius: 10px;
 }
 
 #pagination ul li {

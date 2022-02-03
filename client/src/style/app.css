@@ -10,13 +10,15 @@ html {
     --light-green: rgb(86, 137, 67);
     --light-gray: rgb(176, 176, 176);
     --dark-gray: rgb(100, 100, 100);
+    --off-white: rgb(240, 240, 240);
+
+    background-color: var(--off-white);
 }
 
 .App {
     max-height: 100vh;
     max-width: 100vw;
     overflow: scroll;
-    background-color: rgb(240, 240, 240);
 }
 
 #content {
@@ -28,6 +30,7 @@ html {
     flex-direction: column;
     padding: 0;
     margin: 0;
-    width: 100%;
-    height: 100vh;
+    margin-left: 250px;
+    margin-top: 60px;
+    width: calc(100% - 250px);
 }
