@@ -1,4 +1,5 @@
-import reducer, { PaginationState, goToPage, nextPage, prevPage, updateTotalPage } from '../../feature/pagination';
+import { paginationReducer as reducer, goToPage, nextPage, prevPage, updateTotalPage } from '../../feature/pagination';
+import { PaginationState } from '../../resources/types';
 
 describe('Search Reducer testing', () => {
 
