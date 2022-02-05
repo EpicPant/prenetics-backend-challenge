@@ -24,3 +24,10 @@ export interface ResultType {
     sampleId: string;
     patientName: string;
 }
+
+export interface ApiResponseType {
+    meta: {
+        total: number;
+    };
+    data: ResultType[];
+}
