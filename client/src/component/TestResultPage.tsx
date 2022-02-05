@@ -1,24 +1,31 @@
 import '../style/table.css';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getResultsFromAPI } from '../feature/result';
+import { getResultsFromAPI, updateMeta } from '../feature/result';
 import { SearchInputGroup } from './SearchInputGroup';
 import { ResultTableRow } from './ResultTableRow';
 import { Pagination } from './Pagination';
 import { TotalResultFound } from './TotalResultFound';
 import { RootState } from '../store';
+import { updateTotalPage } from '../feature/pagination';
 
 export const TestResultPage = () => {
     const dispatch = useDispatch();
+    const { pagination, result } = useSelector((state: RootState) => state);
+    const { data, meta, status } = result;
+    const { current_page, limit } = pagination;
 
     useEffect(() => {
-        dispatch(getResultsFromAPI())
-    }, [])
+        dispatch(getResultsFromAPI(current_page))
+    }, [current_page])
 
-    const { data, meta, status } = useSelector((state: RootState) => state.result);
+    useEffect(() => {
+        dispatch(updateTotalPage({ total_page: Math.ceil(meta.total / limit) }))
+     }, [meta.total])
+
     if (status !== 'fulfilled') {
         return (
-            <div id='table'>
+            <div id='loading' data-testid='test-result-page-loading'>
                 Loading...
             </div>       
         )
@@ -26,7 +33,7 @@ export const TestResultPage = () => {
 
     return (
         <>
-            <div id='content-card'>
+            <div id='content-card' data-testid='test-result-page'>
                 <SearchInputGroup />
                 <div id='table-wrapper'>
                     <table id='result-table'>

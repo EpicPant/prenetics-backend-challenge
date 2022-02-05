@@ -3,7 +3,7 @@ import '../style/topnav.css'
 
 export const TopNav = () => {
     return (
-        <div id="topnav">
+        <div id="topnav" data-testid='top-nav'>
             <h2>Patient Management</h2>
 
             <div id='right-side'>
