@@ -1,5 +1,6 @@
 export interface SearchState {
     value: string;
+    query: SearchQuery;
 }
 
 export interface PaginationState {
@@ -29,5 +30,33 @@ export interface ApiResponseType {
     meta: {
         total: number;
     };
-    data: ResultType[];
+    data: [
+        {
+            id: string;
+            type: string;
+            attributes: {
+                resultType: string;
+                sampleId: string;
+                activateTime: string;
+                resultTime: string;
+                result: string;
+            }
+        }
+    ];
+    included: [
+        {
+            id: string;
+            type: string;
+            attributes: {
+                name: string;
+            }
+        }
+    ]
+}
+
+export interface SearchQuery {
+    patientname?: string;
+    sampleid?: string;
+    activationtime?: string;
+    resulttime?: string;
 }
