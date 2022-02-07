@@ -1,8 +1,9 @@
 import '../style/search_input_group.css';
 import React from 'react';
-import { updateKeyword, updateQuery } from '../feature/search';
-import { SEARCH_PLACEHOLDER } from '../resources/constants';
 import { useDispatch, useSelector } from 'react-redux';
+import { updateKeyword, updateQuery } from '../feature/search';
+import { goToPage } from '../feature/pagination';
+import { SEARCH_PLACEHOLDER } from '../resources/constants';
 import { RootState } from '../store';
 
 export const SearchInputGroup = () => {
@@ -24,6 +25,7 @@ export const SearchInputGroup = () => {
         res.activationtime = stringQuery[2] || '';
         res.resulttime = stringQuery[3] || '';
         dispatch(updateQuery(res));
+        dispatch(goToPage({ current_page: 1 }));
     }
 
     return (
