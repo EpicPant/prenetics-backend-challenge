@@ -9,9 +9,7 @@ export const fetchResultsFormAPI = (state: RootState) => {
     
     return axios.get(uri)
     .then((res): ResultState => {
-        console.log(res)
         const { data, meta, included } = res.data as ApiResponseType;
-        console.log(data)
         return {
             status: state.result.status,
             data: data.map((result, i) => {
