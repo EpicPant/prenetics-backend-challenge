@@ -11,13 +11,14 @@ import { updateTotalPage } from '../feature/pagination';
 
 export const TestResultPage = () => {
     const dispatch = useDispatch();
-    const { pagination, result } = useSelector((state: RootState) => state);
+    const { pagination, result, search } = useSelector((state: RootState) => state);
+    const { query } = search;
     const { data, meta, status } = result;
     const { current_page, limit } = pagination;
 
     useEffect(() => {
-        dispatch(getResultsFromAPI(current_page))
-    }, [current_page])
+        dispatch(getResultsFromAPI())
+    }, [current_page, query])
 
     useEffect(() => {
         dispatch(updateTotalPage({ total_page: Math.ceil(meta.total / limit) }))
