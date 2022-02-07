@@ -19,7 +19,7 @@ describe('Result Table testing', () => {
     afterEach(cleanup);
 
     test('test display result correctly', async () => {
-        await store.dispatch(getResultsFromAPI(1))
+        await store.dispatch(getResultsFromAPI())
         expect(screen.queryByTestId('test-result-page-loading')).toBeNull();
         expect(screen.queryByTestId('test-result-page')).not.toBeNull();
 
