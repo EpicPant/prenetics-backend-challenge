@@ -20,7 +20,7 @@ describe('App Testing', () => {
   });
 
   test('if renders <TestResutPage/>', () => {
-    expect(screen.getAllByTestId('test-result-page').length).toBe(1);
+    expect(screen.getAllByTestId('test-result-page-loading').length).toBe(1);
   });
 
 });

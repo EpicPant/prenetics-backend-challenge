@@ -3,7 +3,8 @@ import { render, cleanup, screen, fireEvent } from '@testing-library/react';
 import { SearchInputGroup } from '../../component/SearchInputGroup';
 import { Provider } from 'react-redux';
 import { store } from '../../store';
-import { searchReducer as reducer, updateKeyword } from '../../feature/search';
+import { updateKeyword } from '../../feature/search';
+import { goToPage } from '../../feature/pagination';
 
 describe('Search Input Group Testing', () => {
 
@@ -31,6 +32,14 @@ describe('Search Input Group Testing', () => {
             }
         });
         expect(store.getState().search.value).toBe('test');
+    });
+
+    it('should update query & change current page to 1 after form submitted', () => {        
+        store.dispatch(goToPage({ current_page: 2 }));
+        const form = screen.getByTestId('search-input-group');
+        expect(store.getState().pagination.current_page).toBe(2);
+        fireEvent.submit(form, { value: {} });
+        expect(store.getState().pagination.current_page).toBe(1);
     });
 
 });

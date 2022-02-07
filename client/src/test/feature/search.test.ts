@@ -8,7 +8,12 @@ describe('Search Reducer testing', () => {
     beforeEach(() => {
         initialState = {
             value: '',
-            query: {}
+            query: {
+                sampleid: '',
+                activationtime: '',
+                patientname: '',
+                resulttime: ''
+            }
         }
     });
 
