@@ -1,22 +1,29 @@
 import '../style/search_input_group.css';
 import React from 'react';
-import { updateKeyword } from '../feature/search';
+import { updateKeyword, updateQuery } from '../feature/search';
 import { SEARCH_PLACEHOLDER } from '../resources/constants';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../store';
 
 export const SearchInputGroup = () => {
 
-    const { value } = useSelector((state: RootState) => state.search);
+    const { value, query } = useSelector((state: RootState) => state.search);
 
     const dispatch = useDispatch();
 
     const changeKeyword = (v: string) => {
-        dispatch(updateKeyword({ value: v }));
+        dispatch(updateKeyword(v));
     }
 
     const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        const stringQuery = value.split(':');
+        const res = {...query}
+        res.patientname = stringQuery[0] || '';
+        res.sampleid = stringQuery[1] || '';
+        res.activationtime = stringQuery[2] || '';
+        res.resulttime = stringQuery[3] || '';
+        dispatch(updateQuery(res));
     }
 
     return (
