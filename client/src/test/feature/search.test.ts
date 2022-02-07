@@ -7,7 +7,8 @@ describe('Search Reducer testing', () => {
 
     beforeEach(() => {
         initialState = {
-            value: ''
+            value: '',
+            query: {}
         }
     });
 
@@ -19,7 +20,7 @@ describe('Search Reducer testing', () => {
         const outcome = { ...initialState };
         outcome.value = 'test';
 
-        expect(reducer(initialState, updateKeyword({ value: 'test' }))).toEqual(outcome);
+        expect(reducer(initialState, updateKeyword('test'))).toEqual(outcome);
     });
 
 });
