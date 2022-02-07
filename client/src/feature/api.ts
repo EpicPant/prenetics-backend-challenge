@@ -4,10 +4,19 @@ import { API_URL, ORGANISATION_ID } from '../resources/constants';
 import { ApiResponseType, ResultState } from '../resources/types';
 
 export const fetchResultsFormAPI = (state: RootState) => {
-    let uri = `${API_URL}/org/${ORGANISATION_ID}/sample?limit=${state.pagination.limit}&offset=${state.pagination.current_page - 1}&`;
-    uri = uri + new URLSearchParams({ ...state.search.query });
+    let url = `${API_URL}/org/${ORGANISATION_ID}/sample?limit=${state.pagination.limit}&offset=${state.pagination.current_page - 1}&`;
+    const params = new URLSearchParams();
+
+    let k: keyof typeof state.search.query;
+    for (k in state.search.query) {
+        if (state.search.query[k]!.length > 1) {
+            params.append(k, state.search.query[k]!)
+        }
+    }
     
-    return axios.get(uri)
+    url += params.toString();
+
+    return axios.get(url)
     .then((res): ResultState => {
         const { data, meta, included } = res.data as ApiResponseType;
         return {
