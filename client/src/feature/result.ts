@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-import { ResultType, ResultState, ApiResponseType } from "../resources/types";
-import { mockData } from "../resources/mock_data";
+import { ResultType, ResultState } from "../resources/types";
+import { RootState } from "../store";
+import { fetchResultsFormAPI } from './api';
 
 const initialState: ResultState = {
     data: [],
@@ -10,19 +11,10 @@ const initialState: ResultState = {
     status: 'pending'
 }
 
-export const getResultsFromAPI = createAsyncThunk('result/getResults', async (page: number) =>{
-    const res:ApiResponseType = {
-        meta: {
-            total: 31
-        },
-        data: [...Array(15)].map(() => {
-            return ( {
-                ...mockData,
-                sampleId: page.toString()
-            });
-        })
-    }
-    return res;
+export const getResultsFromAPI = createAsyncThunk('result/getResults', async (_, { getState }) =>{
+    const state: RootState = getState() as RootState;
+    const response = await fetchResultsFormAPI(state);
+    return response
 });
 
 const resultSlice = createSlice({
@@ -41,10 +33,10 @@ const resultSlice = createSlice({
             state.status = 'pending'
             state.data = [];
         });
-        builder.addCase(getResultsFromAPI.fulfilled, (state, action) => {
+        builder.addCase(getResultsFromAPI.fulfilled, (state, { payload }) => {
             state.status = 'fulfilled';
-            state.data = [...action.payload.data];
-            state.meta.total = action.payload.meta.total;
+            state.data = [...payload!.data];
+            state.meta.total = payload!.meta.total;
         });
         builder.addCase(getResultsFromAPI.rejected, (state) => {
             state.status = 'rejected';
