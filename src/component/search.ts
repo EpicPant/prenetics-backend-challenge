@@ -45,15 +45,15 @@ export async function search(
             attributes: {
                 result,
                 sampleId,
-                type,
+                type: organisation.name === 'Circle' ? type : undefined,
                 activateTime,
-                resultTime
+                resultTime,
             },
             relationships: {
                 profile: {
                     data: {
                         type: 'profile',
-                        id: profile.profileId
+                        id: organisation.name === 'Circle' ? profile.profileId : undefined
                     }
                 }
             }
@@ -62,6 +62,7 @@ export async function search(
             type: 'profile',
             id: profile.profileId,
             attributes: {
+                id: organisation.name === 'Circle' ? profile.profileId : undefined,
                 name: profile.name
             }
         }))
