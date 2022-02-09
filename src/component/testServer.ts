@@ -2,7 +2,6 @@ import * as express from 'express';
 import * as expressValidator from 'express-validator';
 import * as http from 'http';
 import { routes } from '../route';
-import { APPLICATION_NAME, PORT } from './constant';
 import { logger } from './logger';
 
 export function createHttpServer() {
@@ -34,7 +33,7 @@ export function createHttpServer() {
                 logger.error(err);
                 if (err.statusCode === 400) {
                     res.status(400);
-                    res.json({ code : 400, msg: err.message, });
+                    res.json({ code: 400, msg: err.message, });
                 } else {
                     res.status(500);
                     res.json({ code: 500, msg: err.message, });
@@ -60,6 +59,5 @@ export function createHttpServer() {
         }
     });
     const server = http.createServer(app);
-    server.listen(PORT);
-    logger.info(`${APPLICATION_NAME} is running on http://localhost:${PORT}`);
+    return server;
 }
